@@ -1,10 +1,11 @@
 .include "m328Pdef.inc" 
 .org 0 
   jmp Reset 
-.org 0x002 
-  jmp knopka 
-.org 0x004
+ 
+.org 0x0004
 	jmp pingas
+.org 0x0024 
+  jmp knopka
 Reset: 
   ldi r16,low(RAMEND) 
   out spl,r16 
@@ -25,7 +26,7 @@ Reset:
   sts UBRR0H, r16 
   ldi r16, low(UBRR0_value) 
   sts UBRR0L, r16 
-  ldi r16, 0x18;(1<<TXEN0|RXEN0)           
+  ldi r16, (1<<TXEN0)|(1<<RXEN0)|(1<<RXCIE0)           
   sts UCSR0B,R16 
   ldi r16,(1<< UCSZ00)|(1<< UCSZ01) 
   sts UCSR0C,R16             
@@ -33,11 +34,9 @@ Reset:
   out DDRD,r24 
   ldi r24,0x0C 
   out PORTD,r24
-  
   ;ldi r24, 0x10
   sbi DDRB, 5
   cbi PORTB, 5
-  
   sei  
 main: jmp main 
 knopka:    

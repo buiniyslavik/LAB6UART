@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.7  C:\Users\home\Documents\Atmel Studio\7.0\3kurs\LAB6UART\LAB6UART\main.asm Fri Oct 18 15:31:50 2019
+AVRASM ver. 2.2.7  C:\Users\home\Documents\Atmel Studio\7.0\3kurs\LAB6UART\LAB6UART\main.asm Fri Oct 18 15:49:33 2019
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\avrasm\inc\m328pdef.inc'
 C:\Users\home\Documents\Atmel Studio\7.0\3kurs\LAB6UART\LAB6UART\main.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\avrasm\inc\m328Pdef.inc'
@@ -1031,60 +1031,59 @@ C:\Users\home\Documents\Atmel Studio\7.0\3kurs\LAB6UART\LAB6UART\main.asm(1): In
                                  
                                  ; ***** END OF FILE ******************************************************
                                  .org 0 
-000000 940c 0006                   jmp Reset 
-                                 .org 0x002 
-000002 940c 0028                   jmp knopka 
-                                 .org 0x004
-000004 940c 0031                 	jmp pingas
+000000 940c 0026                   jmp Reset 
+                                  
+                                 .org 0x0004
+000004 940c 0051                 	jmp pingas
+                                 .org 0x0024 
+000024 940c 0048                   jmp knopka
                                  Reset: 
-000006 ef0f                        ldi r16,low(RAMEND) 
-000007 bf0d                        out spl,r16 
-000008 e008                        ldi r16,high(RAMEND)  
-000009 bf0e                        out sph,r16 
-00000a e00f                        ldi r16, 0x0f 
-00000b 9300 0069                   sts EICRA, r16 
-00000d e003                        ldi r16, 0x03 
-00000e bb0d                        out EIMSK, r16 
-00000f 9852                        cbi ddrd, 2 
-000010 9853                        cbi ddrd, 3 
-000011 ef0f                        ldi r16, 0xff 
-000012 b907                        out ddrc, r16 
+000026 ef0f                        ldi r16,low(RAMEND) 
+000027 bf0d                        out spl,r16 
+000028 e008                        ldi r16,high(RAMEND)  
+000029 bf0e                        out sph,r16 
+00002a e00f                        ldi r16, 0x0f 
+00002b 9300 0069                   sts EICRA, r16 
+00002d e003                        ldi r16, 0x03 
+00002e bb0d                        out EIMSK, r16 
+00002f 9852                        cbi ddrd, 2 
+000030 9853                        cbi ddrd, 3 
+000031 ef0f                        ldi r16, 0xff 
+000032 b907                        out ddrc, r16 
                                  .equ CLK=16000000 
                                  .equ BAUD=9600 
                                  .equ UBRR0_value = (CLK/(BAUD*16)) - 1 
-000013 e000                        ldi r16, high(UBRR0_value) 
-000014 9300 00c5                   sts UBRR0H, r16 
-000016 e607                        ldi r16, low(UBRR0_value) 
-000017 9300 00c4                   sts UBRR0L, r16 
-000019 e108                        ldi r16, 0x18;(1<<TXEN0|RXEN0)           
-00001a 9300 00c1                   sts UCSR0B,R16 
-00001c e006                        ldi r16,(1<< UCSZ00)|(1<< UCSZ01) 
-00001d 9300 00c2                   sts UCSR0C,R16             
-00001f e080                        ldi r24,0 
-000020 b98a                        out DDRD,r24 
-000021 e08c                        ldi r24,0x0C 
-000022 b98b                        out PORTD,r24
-                                   
+000033 e000                        ldi r16, high(UBRR0_value) 
+000034 9300 00c5                   sts UBRR0H, r16 
+000036 e607                        ldi r16, low(UBRR0_value) 
+000037 9300 00c4                   sts UBRR0L, r16 
+000039 e908                        ldi r16, (1<<TXEN0)|(1<<RXEN0)|(1<<RXCIE0)           
+00003a 9300 00c1                   sts UCSR0B,R16 
+00003c e006                        ldi r16,(1<< UCSZ00)|(1<< UCSZ01) 
+00003d 9300 00c2                   sts UCSR0C,R16             
+00003f e080                        ldi r24,0 
+000040 b98a                        out DDRD,r24 
+000041 e08c                        ldi r24,0x0C 
+000042 b98b                        out PORTD,r24
                                    ;ldi r24, 0x10
-000023 9a25                        sbi DDRB, 5
-000024 982d                        cbi PORTB, 5
-                                   
-000025 9478                        sei  
-000026 940c 0026                 main: jmp main 
+000043 9a25                        sbi DDRB, 5
+000044 982d                        cbi PORTB, 5
+000045 9478                        sei  
+000046 940c 0046                 main: jmp main 
                                  knopka:    
                                    ;ldi r16, 0x77 
                                    ;sts   UDR0,r16 
-000028 982d                        cbi PORTB, 0x05
-000029 9100 00c6                   lds r16, UDR0
-00002b 9300 00c6                   sts UDR0, r16
-00002d 3303                        cpi r16, 0x33
-00002e f409                        brne lightoff
-00002f 9a2d                      	sbi PORTB, 0x05
+000048 982d                        cbi PORTB, 0x05
+000049 9100 00c6                   lds r16, UDR0
+00004b 9300 00c6                   sts UDR0, r16
+00004d 3303                        cpi r16, 0x33
+00004e f409                        brne lightoff
+00004f 9a2d                      	sbi PORTB, 0x05
                                    lightoff:
-000030 9518                        Reti 
+000050 9518                        Reti 
                                  
                                  pingas:
-000031 e706                      	ldi r16, 0x76
+000051 e706                      	ldi r16, 0x76
 
 
 RESOURCE USE INFORMATION
@@ -1134,7 +1133,7 @@ Instructions used: 11 out of 113 (9.7%)
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000068    104      0    104   32768   0.3%
+[.cseg] 0x000000 0x0000a8    104      0    104   32768   0.3%
 [.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 

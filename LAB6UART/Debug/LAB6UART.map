@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.7  C:\Users\home\Documents\Atmel Studio\7.0\3kurs\LAB6UART\LAB6UART\main.asm Fri Oct 18 15:31:50 2019
+AVRASM ver. 2.2.7  C:\Users\home\Documents\Atmel Studio\7.0\3kurs\LAB6UART\LAB6UART\main.asm Fri Oct 18 15:49:33 2019
 
 
 EQU  SIGNATURE_000 0000001e
@@ -695,11 +695,11 @@ EQU  ACIaddr      0000002e
 EQU  TWIaddr      00000030
 EQU  SPMRaddr     00000032
 EQU  INT_VECTORS_SIZE 00000034
-CSEG Reset        00000006
-CSEG knopka       00000028
-CSEG pingas       00000031
+CSEG Reset        00000026
+CSEG pingas       00000051
+CSEG knopka       00000048
 EQU  CLK          00f42400
 EQU  BAUD         00002580
 EQU  UBRR0_value  00000067
-CSEG main         00000026
-CSEG lightoff     00000030
+CSEG main         00000046
+CSEG lightoff     00000050

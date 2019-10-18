@@ -23,10 +23,10 @@
   <FILE>LAB6UART.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <Reset><FILE>C:\Users\home\Documents\Atmel Studio\7.0\3kurs\LAB6UART\LAB6UART\main.asm</FILE><LINE>8</LINE></Reset>
-  <knopka><FILE>C:\Users\home\Documents\Atmel Studio\7.0\3kurs\LAB6UART\LAB6UART\main.asm</FILE><LINE>43</LINE></knopka>
-  <pingas><FILE>C:\Users\home\Documents\Atmel Studio\7.0\3kurs\LAB6UART\LAB6UART\main.asm</FILE><LINE>55</LINE></pingas>
-  <main><FILE>C:\Users\home\Documents\Atmel Studio\7.0\3kurs\LAB6UART\LAB6UART\main.asm</FILE><LINE>42</LINE></main>
-  <lightoff><FILE>C:\Users\home\Documents\Atmel Studio\7.0\3kurs\LAB6UART\LAB6UART\main.asm</FILE><LINE>52</LINE></lightoff>
+  <Reset><FILE>C:\Users\home\Documents\Atmel Studio\7.0\3kurs\LAB6UART\LAB6UART\main.asm</FILE><LINE>9</LINE></Reset>
+  <pingas><FILE>C:\Users\home\Documents\Atmel Studio\7.0\3kurs\LAB6UART\LAB6UART\main.asm</FILE><LINE>54</LINE></pingas>
+  <knopka><FILE>C:\Users\home\Documents\Atmel Studio\7.0\3kurs\LAB6UART\LAB6UART\main.asm</FILE><LINE>42</LINE></knopka>
+  <main><FILE>C:\Users\home\Documents\Atmel Studio\7.0\3kurs\LAB6UART\LAB6UART\main.asm</FILE><LINE>41</LINE></main>
+  <lightoff><FILE>C:\Users\home\Documents\Atmel Studio\7.0\3kurs\LAB6UART\LAB6UART\main.asm</FILE><LINE>51</LINE></lightoff>
  </LABELS>
 </ASSEMBLER_INFO>
